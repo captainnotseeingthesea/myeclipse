@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="huadian"
+  id="myeclipse.1506419781066"
+  context-root="/huadian"
+  j2ee-spec="5.0"
+  archive="huadian.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+

@@ -1,0 +1,499 @@
+body{
+    font-family: Microsoft YaHei;
+    font-size: 14px;
+    color: #606060;
+    background: #f5f5f5;
+}
+ul{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+#header{
+    background: #fafafa;
+    height: 40px;
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 1px;
+}
+#header .header_left{
+    float: left;
+}
+#header .header_right{
+    float: right;
+}
+#header .header_in{
+    height: 40px;
+    width: 1190px;
+    margin: 0 auto;
+    font-size: 12px;
+    line-height: 40px;
+}
+#header .header_in .header_li{
+    float: left;
+}
+#header .header_in .header_li a{
+    color: #303030;
+    padding: 0 20px 0 19px;
+    border-right: 1px solid #d6d6d6;
+}
+#header .header_in .header_li a:hover{
+    color: #fc5300;
+}
+#header .header_in .header_li{
+    float: left;
+}
+#header .header_in .header_li .inner_ul{
+    position: absolute;
+    background: #fafafa;
+    z-index:10;
+    display: none;
+}
+#header .header_in .header_li .inner_ul .inner_li{
+    width: 100px;
+    text-align: center;
+    height: 40px;
+}
+#header .header_in .header_li .inner_ul .inner_li a{
+    border-top: 1px solid #d6d6d6; 
+    padding: 8px;
+    border-right: 0; 
+}
+#header .header_in .header_right li:hover .inner_ul{
+    display: block;
+}
+#nav{
+    background: #f5f5f5;
+    height: 80px;
+}
+#nav .nav_in{
+    height: 80px;
+    width: 1190px;
+    margin: 0 auto;
+    font-size:16px ;
+    line-height: 80px;
+    position: relative;
+}
+#nav .nav_in .pic{
+    width: 100px;
+    height: 80px;
+    margin-right: 300px;
+    float: left;  
+}
+#nav .nav_in .pic a{
+    display: block;
+    background: url(../img/photo1.jpg);
+    width: 100%;
+    height: 100%;
+}
+#nav .nav_in .nav_box{
+    float: left;
+    height: 80px;
+}
+#nav .nav_in .nav_box .nav_ul .nav_li{
+    float:left;
+}
+#nav .nav_in .nav_box .nav_ul .nav_li a{
+    color:#333;
+    font-weight:500;
+    padding: 0 30px;
+}
+#nav .nav_in .nav_box .nav_ul .nav_li a:hover{
+    color: #fc5300;
+}
+#nav .nav_in .nav_search{
+    position: absolute;
+    right: 0;
+    top: 20px;
+}
+#nav .nav_in .nav_search .nav_form{
+    background: #ffffff; 
+    height: 50px;
+}
+#search{
+    padding: 15px 0;
+    height: 50px;
+    position: relative;
+    top: -19px;
+    color: #989898;
+    font-size: 14px;
+    border: 1px solid #e0e0e0;
+
+}
+#btn{
+    background:url(../img/search.gif) no-repeat;
+    width:50px;
+    height:50px;
+    border: 1px solid #e0e0e0;
+}
+#center{
+    height: 400px;
+    background: #f6f6f6;
+}
+#center .register .register_header{
+    height: 50px;
+    border-bottom: 1px solid #e2e2e2;
+    position: relative;
+}
+#center .register .register_header h2{
+    color: #636363;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+#center #register_name,#register_password1,#register_password2{
+    width: 300px;
+    padding: 10px 20px 10px 10px;
+    margin: 20px 0 0 50px;
+    border-radius: 3px;
+    border: 1px solid #bcbcbc;
+}
+#center .register #register_submit{
+    padding: 10px 0;
+    width: 100px;
+    border:1px solid #cacaca;
+    border-radius: 3px;
+    font-weight: 900;
+    color: #3f3f3f;
+    position: absolute;
+    bottom: 20px;
+    right: 70px;
+    background: #8686ff;
+}
+#center .register label{
+    position: absolute;
+    left: 10px;
+    bottom: 30px;
+}
+#center .register label span{
+    font-style: italic;
+    font-size: 14px;
+    color: #9d9d9d;
+}
+#center .register .register_header div{
+    width: 16px;
+    height: 16px;
+    border-radius: 9px;
+    border: 1px solid #979797;
+    position: absolute;
+    top:10px;
+    right: 10px;
+    cursor: default; 
+}
+#center .register div span{
+    color: #575757;
+    font-weight: 700; 
+    position: relative;
+    bottom: 4px;
+    left: 1px;
+
+}
+#center .register .register_img1{
+    width:20px;
+    height: 15px;
+    background: url(../img/img4.gif) no-repeat;
+    position: absolute;
+    right: 70px;
+    top: 78px;
+}
+#center .register .register_img2{
+    width:20px;
+    height: 15px;
+    background: url(../img/img5.jpg) no-repeat;
+    position: absolute;
+    right: 70px;
+    top: 140px;
+}
+#center .register .register_img3{
+    width:20px;
+    height: 15px;
+    background: url(../img/img5.jpg) no-repeat;
+    position: absolute;
+    right: 70px;
+    top: 195px;
+}
+#center .register{
+    width:450px;
+    height: 300px;
+    position: absolute;
+    left: 400px;
+    z-index: 1;
+    background: #f0f0f0;
+    position: absolute;
+    box-shadow: 10px 10px 10px #7f7f7f;
+    border-radius: 5px;
+    border:1px solid #cacaca;
+    display: none;
+}
+#center .login{
+    width: 450px;
+    height: 270px;
+    position: absolute;
+    background: #ffffff;
+    left: 400px;
+    z-index: 1;
+    border: 1px solid #cacaca;
+    border-radius: 6px;
+    box-shadow: 10px 10px 10px #7f7f7f;
+    display:none;
+}
+#center .login .login_header{
+    height: 50px;
+    background: #eeeeee;
+    position: relative;
+}
+#center .login .login_header p{
+    line-height: 50px;
+    color: #979797;
+    font-size: 13px;
+    margin-left: 20px;
+}
+#center .login .login_header p span{
+    color: #424242;
+    font-weight: 700;
+    font-size: 15px;
+}
+#center .login .login_header p a{
+    color: #979797;
+}
+#center .login .login_header div{
+    width: 16px;
+    height: 16px;
+    border-radius: 9px;
+    border: 1px solid #979797;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+#center .login .login_header div:hover{
+    cursor: default;
+}
+#center .login .login_header div span{
+    position: relative;
+    bottom: 4px;
+    left: 2px;
+    color: #575757;
+    font-weight: 700;
+}
+#center .login p a:hover{
+    color: #fc5300;
+}
+#center .login form{
+    position: relative;
+    top: 30px;
+    left: 50px;
+}
+#center #login_name,#center #login_password{
+    width: 300px;
+    padding: 10px 30px 10px 10px;
+    border-radius: 5px;
+    margin-bottom:20px;
+    border: 1px solid #bcbcbc;
+}
+#center #login_submit{
+    background: #f1f1f1;
+    width: 100px;
+    padding: 10px 0;
+    border: 1px solid #bcbcbc;
+    border-radius: 3px;
+    position: absolute;
+    right: 110px;
+    font-weight: 700;
+    color: #464646;
+}
+#center .login label{
+    font-size: 13px;
+    color: #7a7a7a;
+    position: absolute;
+    bottom: -50px;
+}
+#center .login .forgot{
+    font-size: 13px;
+    font-style: italic;
+    position: absolute;
+    left: 40px;
+    bottom: 50px;
+}
+#center .login .forgot a{
+    color: #a7a7a7;    
+}
+#center .login .login_img1,.login_img2{
+    width:20px;
+    height: 15px;
+    position: absolute;
+}
+#center .login .login_img1{
+    background: url(../img/img4.gif) no-repeat;     
+    top: 90px;
+    right: 55px;
+}
+#center .login .login_img2{
+    background: url(../img/img5.jpg) no-repeat;     
+    top: 145px;
+    right:60px;
+}
+aside{
+    width: 300px;
+    height:750px; 
+    float: left;
+}
+#center .lunbotu{
+    width: 1000px;
+    height: 400px;
+    margin: 0 auto;
+}
+#center .lunbotu .lbt_pic{
+    width:800px;
+    height: 309px;
+    position: relative;  
+    border: 1px solid blue;
+    top: 20px;
+    left: 100px;
+    border: 0;
+    box-shadow: 10px 10px 10px #909090;
+    border-radius: 5px;
+    overflow: hidden;    
+}
+#center .lunbotu .lbt_pic .pic{
+    width:2400px;
+}
+#center .lunbotu .lbt_pic .pic a{
+    display: block;
+    float: left;
+}
+#center .lunbotu .lbt_ul{
+    position: absolute;
+    bottom: 10px;
+    left: 400px;
+}
+#center .lunbotu .lbt_ul .lbt_li{
+    float: left;
+    width: 10px;
+    height: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    background:#000000;
+}
+aside div h4{
+    padding: 20px;
+    color: #ff3737
+}
+aside div span{
+    padding: 20px 20px 20px 40px;;;
+    display: block;
+}
+aside div span a{
+    color: #121212;
+}
+aside div span a:hover{
+    color: #ff7533
+}
+#goods{
+    background: #f0f0f0;      
+}
+#goods .center{
+    width: 1300px;
+    margin: 0 auto;
+    height: 750px;
+}
+#goods .good_buy,#goods .good_want{
+    overflow: auto;
+}
+#goods .good_buy_show,#goods .good_want_show{
+    width: 1000px;
+    height: 750px;
+    overflow: hidden;
+    float: right;
+    position: absolute;
+}
+#goods .good{
+    width: 200px;
+    height: 280px;
+    border-radius: 4px;
+    float: left;
+    text-align: center;
+    margin: 45px;
+    background:#ffffff;
+    box-shadow: 10px 10px 10px #b2b2b2;
+    overflow: hidden;
+}
+#goods .good a img{
+    width: 200px;
+    height: 200px;
+}
+#goods .good p{
+    color: #b83423;
+    font-size: 15px;
+}
+#goods .good .good_des .good_price{
+    color:#ff7533;
+    float: left;
+    font-size: 15px;
+    margin-left: 10px;
+}
+#goods .good .good_des .condition{
+    height: 20px;
+    width: 60px;
+    float: right;
+    text-align: center;
+    border-radius: 3px;
+    font-weight: 500;
+    margin-right: 10px;
+    cursor:default;
+}
+#true{
+    background: #00ff40;
+}
+#fal{
+    background: #ff0000;
+}
+#goods .good .good_des .connect{
+    float: left;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 10px;
+}
+#goods .good .good_des .connect span{
+    color: #710000;
+    font-size: 12px;
+    font-weight: 700;
+}
+footer .bound{
+    text-align: center;
+    height:30px;
+    margin: 0 auto;
+    width: 600px;
+}
+footer .bound div{
+    margin-top: 14px;            
+    height: 2px;
+    width: 250px;
+    background: #9a9a9a;
+}
+footer .bound .left{
+    float: left;
+}
+footer .bound .right{
+    float: right;
+}
+footer .bound span{
+    font-size: 15px;
+    line-height: 30px;
+    font-weight: 700;  
+    color: #6b6b6b;                             
+}
+footer .text{
+    height: 50px;
+    background:#a6a6a6;
+    position: relative;
+}
+footer .text p{
+    position: absolute;
+    bottom: 0;
+    right:10px;
+    color: #363636
+}
+footer .text address{
+    color: #363636;
+}
