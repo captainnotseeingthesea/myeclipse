@@ -102,6 +102,17 @@ System.out.println("文件夹数："+folderCount); */
 	<textarea rows="13" cols="60" name="description" id="description" form="upBox" required="required" autofocus="autofocus" placeholder="请填写商品的描述信息"></textarea>
 </div>
 </div>
+<footer>
+        <div class="bound">
+            <div class="left"></div>
+            <span>END</span>
+            <div class="right"></div>
+        </div>
+        <div class="text">
+            <address>河北省保定市华北电力大学(二校区)</address>
+            <p><span>@2017-2017 Huadian.com 版权所有</span></p>
+        </div>
+    </footer>
 <script type="text/javascript">
 	var temp=0;//设置每个
     //选择图片，马上预览  

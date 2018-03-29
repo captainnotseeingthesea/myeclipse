@@ -19,6 +19,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import ThumbnaillatorTest.ThumbTest;
+
 import service.GoodsService;
 public class SellGoods extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -120,7 +122,7 @@ public class SellGoods extends HttpServlet {
 
         // 构造临时路径来存储上传的文件
         // 这个路径相对当前应用的目录
-        String uploadPath1 = "../" + File.separator + UPLOAD_DIRECTORY;
+        String uploadPath1 = getServletContext().getRealPath("./") + File.separator + UPLOAD_DIRECTORY;
         // 如果目录不存在则创建
         System.out.println(uploadPath1);
         File uploadDir1 = new File(uploadPath1);
@@ -138,7 +140,6 @@ public class SellGoods extends HttpServlet {
         if (!uploadDir.exists()) {
             uploadDir.mkdir();
         }
-        else {
         	
         	File d = new File(uploadPath);
         	File list[] = d.listFiles();
@@ -156,12 +157,11 @@ public class SellGoods extends HttpServlet {
         		}
         	}
         	uploadPathString=uploadPath+File.separator+folderCount+"-"+goodsNameString;
-            goods.setPicture(uploadPathString);
+            goods.setPicture(username+File.separator+folderCount+"-"+goodsNameString);
         	File uploadDir2 = new File(uploadPathString);
         	if (!uploadDir2.exists()) {
                 uploadDir2.mkdir();
             }
-        }
             // 解析请求的内容提取文件数据
             if (formItems != null && formItems.size() > 0) {
                 // 迭代表单数据
@@ -179,6 +179,7 @@ public class SellGoods extends HttpServlet {
                         request.setAttribute("message",
                             "文件上传成功!");
                     }
+                    
                     else{
                     	if(item.getFieldName().equals("goodsName")){
                     		goods.setGoodsName(item.getString("UTF-8"));
@@ -197,6 +198,9 @@ public class SellGoods extends HttpServlet {
 						}
                     }
                 }
+                ThumbTest thumbTest=new ThumbTest();
+                System.out.println(uploadPathString);
+                thumbTest.test(uploadPathString);
                 User user=new User();
                 user.setNameString(username);
                 GoodsService goodsService=new GoodsService();

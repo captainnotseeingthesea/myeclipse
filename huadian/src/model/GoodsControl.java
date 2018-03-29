@@ -11,12 +11,13 @@ import java.util.ArrayList;
 import db.DBHelper;
 
 public class GoodsControl {
-	public ArrayList<Goods> selectAllGoods(){
+	public ArrayList<Goods> selectAllGoods(Integer status){
 		ArrayList goodsArrayList=new ArrayList<Goods>();
-		String sqlString="SELECT * FROM tb_goods WHERE status=1;";
+		String sqlString="SELECT * FROM tb_goods WHERE status=?;";
 		try {
 			Connection conn=DBHelper.getConnection();
 			PreparedStatement preStatement=conn.prepareStatement(sqlString);
+			preStatement.setInt(1, status);
 			ResultSet rs=preStatement.executeQuery();
 			while(rs.next()){
 				Goods goods=new Goods();
@@ -43,7 +44,37 @@ public class GoodsControl {
 		}
 		return goodsArrayList;
 	}
-	
+	public Goods selectGoodsById(Integer goodsId){
+		Goods goods=new Goods();
+		String sqlString="SELECT * FROM tb_goods WHERE goodsId=?;";
+		try {
+			Connection conn=DBHelper.getConnection();
+			PreparedStatement preStatement=conn.prepareStatement(sqlString);
+			preStatement.setInt(1, goodsId);
+			ResultSet rs=preStatement.executeQuery();
+			if(rs.next()){
+				goods.setGoodsId(rs.getInt("goodsId"));
+				goods.setClassId(rs.getInt("classId"));
+				goods.setSellerId(rs.getInt("sellerId"));
+				goods.setGoodsName(rs.getString("goodsName"));
+				goods.setPrice(rs.getDouble("price"));
+				goods.setStatus(rs.getInt("status"));
+				goods.setPicture(rs.getString("picture"));
+				goods.setDescription(rs.getString("description"));
+				goods.setSellerContact(rs.getString("sellerContact"));
+				goods.setCreateDate(rs.getDate("createDate"));
+				goods.setReserveDate(rs.getDate("reserveDate"));
+				goods.setBuyDate(rs.getDate("buyDate"));
+				goods.setCancelDate(rs.getDate("cancelDate"));
+				goods.setBuyerContact(rs.getString("buyerContact"));
+				goods.setBuyerId(rs.getInt("buyerId"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generateSd catch block
+			e.printStackTrace();
+		}
+		return goods;
+	}	
 	public void insertGoods(Goods goods){
 		String sqlString="INSERT INTO tb_goods (classId,sellerId,goodsName," +
 				"price,status,picture,description,sellerContact) VALUES (?,?,?,?,?,?,?,?);";
@@ -73,7 +104,7 @@ public class GoodsControl {
 		GoodsControl goodsControl=new GoodsControl();
 		Goods goods=new Goods(2,1,"ÊÖ»ú",1999.99,1," ","Apple X","18730272603","57436746@qq.com",1);
 		goodsControl.insertGoods(goods);
-		ArrayList<Goods> goodsArrayList=goodsControl.selectAllGoods();
+		ArrayList<Goods> goodsArrayList=goodsControl.selectAllGoods(1);
 		for(Goods goods1:goodsArrayList){
 			System.out.println(goods1.getGoodsId());
 			System.out.println(goods1.getClassId());

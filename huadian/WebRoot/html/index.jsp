@@ -1,9 +1,29 @@
+<%@page import="service.GoodsClassService"%>
+<%@page import="model.GoodsClass"%>
+<%@page import="java.io.File"%>
+<%@page import="model.Goods"%>
+<%@page import="service.GoodsService"%>
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8"%>
 <%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+	GoodsService goodsService=new GoodsService();
+	ArrayList<Goods> goodsList=goodsService.queryGoods(1);
+	GoodsClassService goodsClassService=new GoodsClassService();
+	String path="/huadian/upload/";
 %>
-
+<%!
+Integer fileCount(Goods goods){
+	String path=getServletContext().getRealPath("./") + File.separator+"upload"+File.separator;
+	int fileCount = 0;
+	File d = new File(path+goods.getPicture());
+ 	File list[] = d.listFiles();
+	for(int i = 0; i < list.length; i++){
+	    if(list[i].isFile()&&list[i].getName().indexOf("thumbnail-")!=-1){
+	        fileCount++;
+	    }
+}
+	return fileCount;
+} 
+ %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -63,7 +83,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="nav_box">
                 <ul class="nav_ul">
                     <li class="nav_li">
-                        <a href="javascript:void(0);">首页</a>
+                        <a href="javascript:void(0);" style="color:#fc5300">首页</a>
                     </li>
                     <li class="nav_li"><a href="javascript:void(0);">购买物品</a></li>
                     <li class="nav_li"><a href="javascript:void(0);">求购商品</a></li>
@@ -119,9 +139,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="lunbotu">
             <div class="lbt_pic">
                 <div class="pic">
-                   <a href="#"><img src="/huadian/html/img/pic_1.jpg" alt="pic_1"></a>
-                   <a href="#"><img src="/huadian/html/img/pic_2.jpg" alt="pic_2"></a> 
-                   <a href="#"><img src="/huadian/html/img/pic_3.jpg" alt="pic_3"></a>                    
+                   <a href="/huadian/html/img/pic_1.jpg"><img src="/huadian/html/img/pic_1.jpg" alt="pic_1"></a>
+                   <a href="/huadian/html/img/pic_2.jpg"><img src="/huadian/html/img/pic_2.jpg" alt="pic_2"></a> 
+                   <a href="/huadian/html/img/pic_3.jpg"><img src="/huadian/html/img/pic_3.jpg" alt="pic_3"></a>                    
                 </div>
                 <ul class="lbt_ul">
                     <li xuhao="0" class="lbt_li" style="background:#fc5300"></li>
@@ -139,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 生活用品
                             </h4>
                             <p>
-                                <span><a href="javascript:void(0)" xh="1">耳机</a></span>
+                                <span><a href="javascript:void(0)" xh="1" style="color:#fc5300">耳机</a></span>
                                 <span><a href="javascript:void(0)" xh="2">台灯</a></span>
                                 <span><a href="javascript:void(0)" xh="3">小物品</a></span>
                             </p>
@@ -165,20 +185,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     </aside>
             <div class="good_buy">
             <div class="good_buy_show">
+            <%if(goodsList.size()>0){
+            for(Goods goods:goodsList){
+            %>
+            
             <div class="good">
-                <a href="#"><img src="/huadian/html/img/img1.jpg" alt=""></a>
-                <p class="good_name"><span>耳机</span></p>
+                <a href="/huadian/html/goodsShow.jsp?fileCount=<%=fileCount(goods)%>&goodsId=<%=goods.getGoodsId()%>"><img src=<%=path+goods.getPicture()+File.separator+"thumbnail.1.jpg"%> alt="图片无法显示"></a>
+                <p class="good_name"><span><%=goods.getGoodsName()%></span></p>
                 <div class="good_des">
-                    <span class="good_price">￥ 268.00</span>
+                    <span class="good_price">￥ <%=goods.getPrice() %></span>
                     <div id="fal" class="condition">
                         <span>已预约</span>
                     </div>
                     <div class="connect">
-                            联系方式：<span>phone:18730272603</span>  
+                            联系方式：<span><%=goods.getSellerContact() %></span>  
                     </div>
                 </div>
             </div>
-            <div class="good">
+            <%}} %>
+            <!-- <div class="good">
                 <a href="#"><img src="/huadian/html/img/img2.jpg" alt=""></a>
                 <p class="good_name"><span>大神笔记</span></p>
                 <div class="good_des">
@@ -268,30 +293,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             联系方式：<span>phone:13947830243</span>    
                         </div>
                 </div>
-            </div>
+            </div>-->
         </div>
-        <div class="good_buy_show">
-
-        </div>
-        <div class="good_buy_show">
-
-        </div>
-        <div class="good_buy_show">
-
-        </div>
-        <div class="good_buy_show">
-            
-        </div>
-        <div class="good_buy_show">
-
-        </div>
-        <div class="good_buy_show">
-
-        </div>
-        <div class="good_buy_show">
-
-        </div>
-    </div>
+        
     <div class="good_want">
         
     </div>

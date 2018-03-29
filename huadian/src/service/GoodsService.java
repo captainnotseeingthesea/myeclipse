@@ -1,6 +1,7 @@
 package service;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import model.Goods;
 import model.GoodsControl;
@@ -16,5 +17,15 @@ public class GoodsService {
 		goods.setSellerId(userId);
 		goods.setStatus(1);
 		goodsControl.insertGoods(goods);
+	}
+	public ArrayList<Goods> queryGoods(Integer status) {
+		GoodsControl goodsControl=new GoodsControl();
+		ArrayList<Goods>goodsArrayList=goodsControl.selectAllGoods(status);
+		return goodsArrayList;
+	}
+	public Goods queryGoodsById(Integer goodsId) {
+		GoodsControl goodsControl=new GoodsControl();
+		Goods goods=goodsControl.selectGoodsById(goodsId);
+		return goods;
 	}
 }

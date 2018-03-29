@@ -408,7 +408,7 @@ aside div span a:hover{
 }
 #goods .good{
     width: 200px;
-    height: 280px;
+    height: 230px;
     border-radius: 4px;
     float: left;
     text-align: center;
@@ -419,7 +419,7 @@ aside div span a:hover{
 }
 #goods .good a img{
     width: 200px;
-    height: 200px;
+    height: 150px;
 }
 #goods .good p{
     color: #b83423;

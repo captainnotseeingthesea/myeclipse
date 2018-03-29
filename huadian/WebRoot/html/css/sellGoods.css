@@ -174,3 +174,41 @@ a{
     cursor: pointer;
     border-radius: 5px;
 }
+footer .bound{
+    text-align: center;
+    height:30px;
+    margin: 0 auto;
+    width: 600px;
+}
+footer .bound div{
+    margin-top: 14px;            
+    height: 2px;
+    width: 250px;
+    background: #9a9a9a;
+}
+footer .bound .left{
+    float: left;
+}
+footer .bound .right{
+    float: right;
+}
+footer .bound span{
+    font-size: 15px;
+    line-height: 30px;
+    font-weight: 700;  
+    color: #6b6b6b;                             
+}
+footer .text{
+    height: 50px;
+    background:#a6a6a6;
+    position: relative;
+}
+footer .text p{
+    position: absolute;
+    bottom: 0;
+    right:10px;
+    color: #363636
+}
+footer .text address{
+    color: #363636;
+}

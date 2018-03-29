@@ -187,7 +187,11 @@ $(function() {
 		});
 		$(".login_tishi").html("");
 	})
-	$("#nav .nav_in .nav_box .nav_ul .nav_li a").eq(0).click(function() {
+/*	$("#nav .nav_in .nav_box .nav_ul .nav_li a").eq(0).click(function() {
+		$("#nav .nav_in .nav_box .nav_ul .nav_li a").css({
+			"color":"#fc5300"
+		});
+		
 		$("#goods .good_buy").css({
 			"display" : "block"
 		});
@@ -221,6 +225,14 @@ $(function() {
 			"display" : "block"
 		});
 
+	})*/
+	$("#nav .nav_in .nav_box .nav_ul .nav_li a").click(function(){
+		$("#nav .nav_in .nav_box .nav_ul .nav_li a").css({
+			"color":"#333"
+		})
+		$(this).css({
+			"color":"#fc5300"
+		})
 	})
 	$("aside div span a").click(function() {
 		var xh = $(this).attr("xh");
