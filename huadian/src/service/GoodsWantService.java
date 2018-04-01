@@ -4,15 +4,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import model.Goods;
-import model.GoodsControl;
+import model.GoodsWantControl;
 import model.PageBean;
 import model.User;
 import model.UserControl;
 
-public class GoodsService {
+public class GoodsWantService {
 	public void addGoods(Goods goods,User user){
 		UserControl userControl=new UserControl();
-		GoodsControl goodsControl=new GoodsControl();
+		GoodsWantControl goodsControl=new GoodsWantControl();
 		Integer userId;
 		userId = userControl.queryUserId(user).getId();
 		goods.setSellerId(userId);
@@ -20,17 +20,17 @@ public class GoodsService {
 		goodsControl.insertGoods(goods);
 	}
 	public ArrayList<Goods> queryGoods(Integer status) {
-		GoodsControl goodsControl=new GoodsControl();
+		GoodsWantControl goodsControl=new GoodsWantControl();
 		ArrayList<Goods>goodsArrayList=goodsControl.selectAllGoods(status);
 		return goodsArrayList;
 	}
 	public Goods queryGoodsById(Integer goodsId) {
-		GoodsControl goodsControl=new GoodsControl();
+		GoodsWantControl goodsControl=new GoodsWantControl();
 		Goods goods=goodsControl.selectGoodsById(goodsId);
 		return goods;
 	}
 	public Integer queryGoodsNumByCondition(Integer status,Goods goods,String condition){
-		GoodsControl goodsControl=new GoodsControl();
+		GoodsWantControl goodsControl=new GoodsWantControl();
 		int num=goodsControl.selectGoodsNumByCondition(status,condition, goods);
 		return num;
 	}
@@ -38,12 +38,12 @@ public class GoodsService {
 		int num=queryGoodsNumByCondition(status,goods, condition);
 		PageBean<Goods> pageBean2=new PageBean<Goods>(pageBean.getPageNum(),pageBean.getPageSize(),num);
 		pageBean.setTotalRecord(num);
-		GoodsControl goodsControl=new GoodsControl();
+		GoodsWantControl goodsControl=new GoodsWantControl();
 		pageBean2=goodsControl.selectGoodsByContion(status,pageBean2, condition, goods);
 		return pageBean2;
 	}
 	public void updateGoods(Goods goods){
-		GoodsControl goodsControl=new GoodsControl();
+		GoodsWantControl goodsControl=new GoodsWantControl();
 		goodsControl.updateGoods(goods);
 	}
 	public static void main(String[] args) {

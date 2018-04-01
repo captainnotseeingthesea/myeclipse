@@ -146,20 +146,58 @@ body{
 #main .center .center_right .content,.goodsClass span,.contact span{
     color: #333;
 }
-#main .center .center_right form .reserve{
+#main .center .center_right .reserve{
     border: 1px solid #AAA;
     background: #fc5300;
-    width: 130px;
-    height: 50px;
-    border-radius: 3px;
+    border-radius: 5px;
     font-size: 17px;
     color: white;
     letter-spacing: 8px;
     opacity: 0.9;
-    margin:50px 0 0 50px;
+    position:relative;
+    top:100px;
+    left:50px;
+    padding:10px;
 }
-#main .center .center_right form .reserve:hover{
+#main .center .center_right .reserve:hover{
     opacity: 1;
+}
+#main .center .buyerInfo{
+	position:absolute;
+	width:500px;
+	height:130px;
+	border:1px solid #AAA;
+	border-radius:3px;
+	text-align:center;
+	background:#FFF;
+	left:480px;
+	top:150px;
+	box-shadow:10px 10px 10px #AAA;
+	display:none;
+}
+#main .center .buyerInfo .contact{
+	width:300px;
+	border:1px solid #AAA;
+	border-radius:3px;
+	padding:7px 7px 5px 0;
+	margin:20px 0 20px 0;
+}
+#main .center .buyerInfo .close{
+	position:absolute;
+	top:7px;
+	right:7px;
+	opacity:0.6;
+	
+}
+#main .center .buyerInfo .reserve:hover{
+	color:#fc5300;
+}
+#main .center .buyerInfo .reserve{
+	width:100px;
+	height:30px;
+	border-radius:3px;
+	border:1px solid #AAA;
+	background:#EEE;
 }
 footer .bound{
     text-align: center;

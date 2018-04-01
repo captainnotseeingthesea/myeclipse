@@ -187,6 +187,14 @@ $(function() {
 		});
 		$(".login_tishi").html("");
 	})
+	$("#nav .nav_in .nav_box a").eq($("#nav .nav_in .nav_box").attr("xuhao")).css({
+		'color':'#fc5300'});
+	$("#goods .goods_center aside a").eq($("#goods .goods_center aside").attr("goodsClass")).css({
+		'color':'#fc5300'});
+	if($("#hint").val().length>0){
+		alert($("#hint").val());
+	}
+	
 /*	$("#nav .nav_in .nav_box .nav_ul .nav_li a").eq(0).click(function() {
 		$("#nav .nav_in .nav_box .nav_ul .nav_li a").css({
 			"color":"#fc5300"

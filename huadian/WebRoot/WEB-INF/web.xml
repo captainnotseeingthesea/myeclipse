@@ -32,6 +32,34 @@
     <servlet-name>SellGoods</servlet-name>
     <servlet-class>servlet.SellGoods</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>BuyGoods</servlet-name>
+    <servlet-class>servlet.BuyGoods</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CancelGoods</servlet-name>
+    <servlet-class>servlet.CancelGoods</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>WantGoods</servlet-name>
+    <servlet-class>servlet.WantGoods</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>SellWantGoods</servlet-name>
+    <servlet-class>servlet.SellWantGoods</servlet-class>
+  </servlet>
+
+
+
+
 
 
 
@@ -55,5 +83,21 @@
   <servlet-mapping>
     <servlet-name>SellGoods</servlet-name>
     <url-pattern>/servlet/SellGoods</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BuyGoods</servlet-name>
+    <url-pattern>/servlet/BuyGoods</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CancelGoods</servlet-name>
+    <url-pattern>/servlet/CancelGoods</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WantGoods</servlet-name>
+    <url-pattern>/servlet/WantGoods</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SellWantGoods</servlet-name>
+    <url-pattern>/servlet/SellWantGoods</url-pattern>
   </servlet-mapping>
 </web-app>

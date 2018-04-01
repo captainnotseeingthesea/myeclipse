@@ -1,3 +1,5 @@
+<%@page import="service.GoodsWantService"%>
+<%@page import="model.PageBean"%>
 <%@page import="service.GoodsClassService"%>
 <%@page import="model.GoodsClass"%>
 <%@page import="java.io.File"%>
@@ -5,8 +7,49 @@
 <%@page import="service.GoodsService"%>
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=UTF-8"%>
 <%
+	Integer buyOrSell=0;//0为首页 1代表是查看想要买的物品，2代表查看想要卖的物品
+	Integer goodsClass=0;//0全部，1耳机，2台灯，3小物品，4书，5电子设备，6各类笔记，7卡片	
+							/* 页数控制 */
 	GoodsService goodsService=new GoodsService();
-	ArrayList<Goods> goodsList=goodsService.queryGoods(1);
+	GoodsWantService goodsWantService=new GoodsWantService();
+	request.setCharacterEncoding("UTF-8");
+	ArrayList<Goods> goodsList =new ArrayList<Goods>();
+	Integer pageNum=1;
+	if(request.getParameter("pageNum")!=null){
+		pageNum=Integer.parseInt(request.getParameter("pageNum"));
+ 	}
+ 	if(request.getParameter("buyOrSell")!=null){
+ 		System.out.println(request.getParameter("buyOrSell"));
+ 		buyOrSell=Integer.parseInt(request.getParameter("buyOrSell"));
+ 	}
+ 	if(request.getParameter("goodsClass")!=null){
+ 		System.out.println(request.getParameter("goodsClass"));
+ 		goodsClass=Integer.parseInt(request.getParameter("goodsClass"));
+ 	}
+ 	
+ 	PageBean<Goods> pageBean=new PageBean<Goods>();
+	pageBean.setPageNum(pageNum);
+	pageBean.setPageSize(6); 
+	Goods goodsTest=new Goods();
+	goodsTest.setClassId(goodsClass);
+	//ArrayList<Goods> goodsList=goodsService.queryGoods(1);
+	if((buyOrSell==0||buyOrSell==1)&&goodsClass==0){
+		pageBean=goodsService.queryGoodsByCondition(1,pageBean, goodsTest, "all");
+	}
+	else if((buyOrSell==0||buyOrSell==1)&&goodsClass!=0)
+	{
+		pageBean=goodsService.queryGoodsByCondition(1,pageBean, goodsTest, "class");
+	}
+	else if((buyOrSell==2)&&goodsClass==0)
+	{
+		pageBean=goodsWantService.queryGoodsByCondition(1,pageBean, goodsTest, "all");
+	}
+	else if((buyOrSell==2)&&goodsClass!=0)
+	{
+		pageBean=goodsWantService.queryGoodsByCondition(1,pageBean, goodsTest, "class");
+	}
+	goodsList=pageBean.getList();
+	
 	GoodsClassService goodsClassService=new GoodsClassService();
 	String path="/huadian/upload/";
 %>
@@ -80,13 +123,13 @@ Integer fileCount(Goods goods){
             <div class="pic">
                 <a href="#" title="华电二手交易平台"></a>
             </div>
-            <div class="nav_box">
+            <div class="nav_box" xuhao="<%=buyOrSell %>">
                 <ul class="nav_ul">
                     <li class="nav_li">
-                        <a href="javascript:void(0);" style="color:#fc5300">首页</a>
+                        <a href="/huadian/html/index.jsp?buyOrSell=0">首页</a>
                     </li>
-                    <li class="nav_li"><a href="javascript:void(0);">购买物品</a></li>
-                    <li class="nav_li"><a href="javascript:void(0);">求购商品</a></li>
+                    <li class="nav_li"><a href="/huadian/html/index.jsp?buyOrSell=1">购买物品</a></li>
+                    <li class="nav_li"><a href="/huadian/html/index.jsp?buyOrSell=2">求购商品</a></li>
                 </ul>
             </div>
             <div class="nav_search">
@@ -152,16 +195,16 @@ Integer fileCount(Goods goods){
         </div>
     </div>
     <div id="goods">
-        <div class="center">
-                <aside>
+        <div class="goods_center">
+                <aside goodsClass="<%=goodsClass-1%>">
                         <div class="life">
                             <h4>
                                 生活用品
                             </h4>
                             <p>
-                                <span><a href="javascript:void(0)" xh="1" style="color:#fc5300">耳机</a></span>
-                                <span><a href="javascript:void(0)" xh="2">台灯</a></span>
-                                <span><a href="javascript:void(0)" xh="3">小物品</a></span>
+                                <span><a href="/huadian/html/index.jsp?buyOrSell=<%=buyOrSell %>&goodsClass=1" xh="1">耳机</a></span>
+                                <span><a href="/huadian/html/index.jsp?buyOrSell=<%=buyOrSell %>&goodsClass=2" xh="2">台灯</a></span>
+                                <span><a href="/huadian/html/index.jsp?buyOrSell=<%=buyOrSell %>&goodsClass=3" xh="3">小物品</a></span>
                             </p>
                         </div>
                         <div class="study">
@@ -169,9 +212,9 @@ Integer fileCount(Goods goods){
                                 学习用品
                             </h4>
                             <p>
-                                <span><a href="javascript:void(0)" xh="4">书</a></span>
-                                <span><a href="javascript:void(0)" xh="5">电子设备</a></span>
-                                <span><a href="javascript:void(0)" xh="6">各类笔记</a></span>
+                                <span><a href="/huadian/html/index.jsp?buyOrSell=<%=buyOrSell %>&goodsClass=4" xh="4">书</a></span>
+                                <span><a href="/huadian/html/index.jsp?buyOrSell=<%=buyOrSell %>&goodsClass=5" xh="5">电子设备</a></span>
+                                <span><a href="/huadian/html/index.jsp?buyOrSell=<%=buyOrSell %>&goodsClass=6" xh="6">各类笔记</a></span>
                             </p>
                         </div>
                         <div class="other">
@@ -179,121 +222,50 @@ Integer fileCount(Goods goods){
                                 其他
                             </h4>
                             <p>
-                                <span><a href="javascript:void(0)" xh="7">各类卡片</a></span>
+                                <span><a href="/huadian/html/index.jsp?buyOrSell=<%=buyOrSell %>&goodsClass=7" xh="7">各类卡片</a></span>
                             </p>
                         </div>
                     </aside>
             <div class="good_buy">
             <div class="good_buy_show">
-            <%if(goodsList.size()>0){
+            <%if(goodsList!=null&&goodsList.size()>0){
             for(Goods goods:goodsList){
             %>
             
             <div class="good">
+            	<%if(buyOrSell==0||buyOrSell==1){ %>
                 <a href="/huadian/html/goodsShow.jsp?fileCount=<%=fileCount(goods)%>&goodsId=<%=goods.getGoodsId()%>"><img src=<%=path+goods.getPicture()+File.separator+"thumbnail.1.jpg"%> alt="图片无法显示"></a>
+                <%}else if(buyOrSell==2){ %>
+                <a href="/huadian/html/wantGoodsShow.jsp?fileCount=<%=fileCount(goods)%>&goodsId=<%=goods.getGoodsId()%>"><img src=<%=path+goods.getPicture()+File.separator+"thumbnail.1.jpg"%> alt="图片无法显示"></a>
+                <%} %>
                 <p class="good_name"><span><%=goods.getGoodsName()%></span></p>
                 <div class="good_des">
                     <span class="good_price">￥ <%=goods.getPrice() %></span>
-                    <div id="fal" class="condition">
-                        <span>已预约</span>
-                    </div>
+                    <br/>
                     <div class="connect">
                             联系方式：<span><%=goods.getSellerContact() %></span>  
                     </div>
                 </div>
             </div>
             <%}} %>
-            <!-- <div class="good">
-                <a href="#"><img src="/huadian/html/img/img2.jpg" alt=""></a>
-                <p class="good_name"><span>大神笔记</span></p>
-                <div class="good_des">
-                     <span class="good_price">￥ 50.00</span>  
-                     <div id="true" class="condition">
-                         <span>预约</span>
-                    </div> 
-                    <div class="connect">
-                            联系方式：<span>qq:57436746</span>  
-                    </div>
-                </div>
+            <div class="pageDiv">
+            	<%if(pageBean.getTotalPage()>=1){
+            	if(pageBean.getPageNum()>1){ %>
+            		<a href="/huadian/html/index.jsp?pageNum=1&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>" class="page">首页</a>
+            		<a href="/huadian/html/index.jsp?pageNum=<%=pageNum-1 %>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>" class="page">前一页</a>
+            	<%}
+            	 for(int i=pageBean.getStart();i<pageBean.getPageNum();i++){%>
+            		<a class="page" href="/huadian/html/index.jsp?pageNum=<%=i%>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>">第<%=i%>页</a>
+            		<%} %>
+            		<a class="page" id="pageNum" href="javascript:void(0);">第<%=pageBean.getPageNum() %>页</a>
+            	<%for(int i=pageBean.getPageNum()+1;i<=pageBean.getEnd();i++){ %>
+            		<a class="page" href="/huadian/html/index.jsp?pageNum=<%=i%>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>">第<%=i%>页</a>
+            	<%}
+            	if(pageBean.getPageNum()<pageBean.getTotalPage()){ %>
+            		<a class="page" href="/huadian/html/index.jsp?pageNum=<%=pageNum+1%>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>">后一页</a>
+            		<a class="page" href="/huadian/html/index.jsp?pageNum=<%=pageBean.getTotalPage()%>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>">尾页</a>
+            	<%}} %>
             </div>
-            <div class="good">
-                <a href="#"><img src="/huadian/html/img/img3.jpg" alt=""></a>
-                <p class="good_name"><span>电风扇</span></p>
-                <div class="good_des">
-                       <span class="good_price">价格面议</span> 
-                       <div id="true" class="condition">
-                           <span>预约</span>
-                       </div>
-                       <div class="connect">
-                            联系方式：<span>phone:18730272603</span>  
-                       </div>
-                </div>
-            </div>
-            <div class="good">
-                <a href="#"><img src="/huadian/html/img/img1.jpg" alt=""></a>
-                <p class="good_name"><span>挂式台灯</span></p>
-                <div class="good_des">
-                        <span class="good_price">￥ 20.00</span>
-                        <div id="true" class="condition">
-                            <span>预约</span>
-                        </div>
-                        <div class="connect">
-                                联系方式：<span>qq:795939237</span>    
-                        </div>
-                </div>
-            </div>
-            <div class="good">
-                <a href="#"><img src="/huadian/html/img/img2.jpg" alt=""></a>
-                <p class="good_name"><span>电脑桌</span></p>
-                <div class="good_des">
-                        <span class="good_price">价格面议 可小刀</span>
-                        <div id="true" class="condition">
-                            <span>预约</span>
-                        </div>
-                        <div class="connect">
-                                联系方式：<span>phone:18833210750</span>     
-                        </div>
-                </div>
-            </div>
-            <div class="good">
-                <a href="#"><img src="/huadian/html/img/img3.jpg" alt=""></a>
-                <p class="good_name"><span>收音机</span></p>
-                <div class="good_des">
-                        <span class="good_price">￥ 10.00</span>
-                        <div id="fal" class="condition">
-                            <span>已预约</span>
-                        </div>
-                        <div class="connect">
-                                联系方式：<span>phone:18833210750</span>      
-                        </div>
-                </div>
-            </div>
-            <div class="good">
-                <a href="#"><img src="/huadian/html/img/img1.jpg" alt=""></a>
-                <p class="good_name"><span>考研书</span></p>
-                <div class="good_des">
-                       <span class="good_price">价格面议</span> 
-                       <div id="true" class="condition">
-                           <span>预约</span>
-                       </div>
-                       <div class="connect">
-                            联系方式：<span>qq:747482035</span>    
-                       </div>
-                </div>
-            </div>
-            <div class="good">
-                <a href="#"><img src="/huadian/html/img/img2.jpg" alt=""></a>
-                <p class="good_name"><span>徽谷健身卡</span></p>
-                <div class="good_des">
-                        <span class="good_price">￥ 1188.00</span>
-                        <div id="true" class="condition">
-                            <span>预约</span>
-                        </div>
-                        <div class="connect">
-                            联系方式：<span>phone:13947830243</span>    
-                        </div>
-                </div>
-            </div>-->
         </div>
         
     <div class="good_want">
@@ -312,5 +284,13 @@ Integer fileCount(Goods goods){
             <p><span>@2017-2017 Huadian.com 版权所有</span></p>
         </div>
     </footer>
+    <%
+    String error="";
+	if(request.getParameter("reserve")!=null&&Integer.parseInt(request.getParameter("reserve"))==0){
+		error="请先登录或注册";
+	}else if(request.getParameter("reserve")!=null&&Integer.parseInt(request.getParameter("reserve"))==1){
+		error="恭喜您，预定成功，请与卖主联系";}
+	%>
+		<input id="hint" value=<%=error%>>
 </body>
 </html>

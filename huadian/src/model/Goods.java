@@ -1,5 +1,6 @@
 package model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 public class Goods {
@@ -12,8 +13,8 @@ public class Goods {
 	private String picture;
 	private String description;
 	private String sellerContact;
-	private Date createDate;
-	private Date reserveDate;
+	private Timestamp createDate;
+	private Timestamp reserveDate;
 	public Goods(Integer classId, Integer sellerId,
 			String goodsName, double price, Integer status,String picture, String description,
 			String sellerContact, String buyerContact, Integer buyerId) {
@@ -41,8 +42,8 @@ public class Goods {
 		
 	}
 
-	private Date buyDate;
-	private Date cancelDate;
+	private Timestamp buyDate;
+	private Timestamp cancelDate;
 	private String buyerContact;
 
 	public Integer getGoodsId() {
@@ -109,35 +110,35 @@ public class Goods {
 		this.sellerContact = sellerContact;
 	}
 
-	public Date getCreateDate() {
+	public Timestamp getCreateDate() {
 		return createDate;
 	}
 
-	public void setCreateDate(Date createDate) {
+	public void setCreateDate(Timestamp createDate) {
 		this.createDate = createDate;
 	}
 
-	public Date getReserveDate() {
+	public Timestamp getReserveDate() {
 		return reserveDate;
 	}
 
-	public void setReserveDate(Date reserveDate) {
+	public void setReserveDate(Timestamp reserveDate) {
 		this.reserveDate = reserveDate;
 	}
 
-	public Date getBuyDate() {
+	public Timestamp getBuyDate() {
 		return buyDate;
 	}
 
-	public void setBuyDate(Date buyDate) {
+	public void setBuyDate(Timestamp buyDate) {
 		this.buyDate = buyDate;
 	}
 
-	public Date getCancelDate() {
+	public Timestamp getCancelDate() {
 		return cancelDate;
 	}
 
-	public void setCancelDate(Date cancelDate) {
+	public void setCancelDate(Timestamp cancelDate) {
 		this.cancelDate = cancelDate;
 	}
 

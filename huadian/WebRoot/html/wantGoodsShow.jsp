@@ -1,3 +1,4 @@
+<%@page import="service.GoodsWantService"%>
 <%@page import="java.io.File"%>
 <%@page import="service.GoodsClassService"%>
 <%@page import="model.Goods"%>
@@ -7,7 +8,7 @@
 	request.setCharacterEncoding("UTF-8");
 	Integer fileCount=Integer.parseInt(request.getParameter("fileCount").toString());
 	Integer goodsId=Integer.parseInt(request.getParameter("goodsId").toString());
-  	GoodsService goodsService=new GoodsService();
+  	GoodsWantService goodsService=new GoodsWantService();
  	Goods goods=goodsService.queryGoodsById(goodsId);
  	GoodsClassService goodsClassService=new GoodsClassService();
  	String goodsClassName=goodsClassService.queryGoodsClass(goods).getClassName();
@@ -85,7 +86,7 @@
 					<a class="reserve">立即预定</a>
 			</div>
 			<div class="buyerInfo">
-				<form action="/huadian/servlet/BuyGoods" method="post">
+				<form action="/huadian/servlet/SellWantGoods" method="post">
 					<input type="text"	name="contact" placeholder="您的联系方式" class="contact" required="required">
 					<input type="hidden" name="goodsId" value=<%=goodsId%>>
 					<br/>

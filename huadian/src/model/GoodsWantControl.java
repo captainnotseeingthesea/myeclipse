@@ -1,3 +1,4 @@
+
 package model;
 
 import java.net.ConnectException;
@@ -14,7 +15,7 @@ import service.GoodsService;
 
 import db.DBHelper;
 
-public class GoodsControl {
+public class GoodsWantControl {
 	public Goods setGoods(ResultSet rs) {
 		Goods goods=new Goods();
 		
@@ -42,7 +43,7 @@ public class GoodsControl {
 	}
 	public ArrayList<Goods> selectAllGoods(Integer status){
 		ArrayList goodsArrayList=new ArrayList<Goods>();
-		String sqlString="SELECT * FROM tb_goods WHERE status=?;";
+		String sqlString="SELECT * FROM tb_goods_want WHERE status=?;";
 		try {
 			Connection conn=DBHelper.getConnection();
 			PreparedStatement preStatement=conn.prepareStatement(sqlString);
@@ -61,7 +62,7 @@ public class GoodsControl {
 	}
 	
 	public Integer selectGoodsNumByCondition(Integer status,String condition,Goods goods) {
-		String sql="select count(*) from tb_goods where status=?";
+		String sql="select count(*) from tb_goods_want where status=?";
 		int num=0;
 		try {
 			Connection connection=DBHelper.getConnection();
@@ -107,7 +108,7 @@ public class GoodsControl {
 	
 	public PageBean<Goods> selectGoodsByContion(Integer status,PageBean<Goods> pageBean,String condition,Goods goods){
 		ArrayList<Goods> arrayList=new ArrayList<Goods>();
-		String sql="select * from tb_goods where status=?";
+		String sql="select * from tb_goods_want where status=?";
 		Connection connection;
 		try {
 			connection = DBHelper.getConnection();
@@ -168,7 +169,7 @@ public class GoodsControl {
 	
 	public Goods selectGoodsById(Integer goodsId){
 		Goods goods=new Goods();
-		String sqlString="SELECT * FROM tb_goods WHERE goodsId=?;";
+		String sqlString="SELECT * FROM tb_goods_want WHERE goodsId=?;";
 		try {
 			Connection conn=DBHelper.getConnection();
 			PreparedStatement preStatement=conn.prepareStatement(sqlString);
@@ -184,7 +185,7 @@ public class GoodsControl {
 		return goods;
 	}	
 	public void insertGoods(Goods goods){
-		String sqlString="INSERT INTO tb_goods (classId,sellerId,goodsName," +
+		String sqlString="INSERT INTO tb_goods_want (classId,sellerId,goodsName," +
 				"price,status,picture,description,sellerContact) VALUES (?,?,?,?,?,?,?,?);";
 		try {
 			Connection connection=DBHelper.getConnection();
@@ -206,7 +207,7 @@ public class GoodsControl {
 	}
 	
 	public void updateGoods(Goods goods) {
-		String sql="update tb_goods set classId=?,goodsName=?,price=?,status=?,picture=?,description=?,sellerContact=?,reserveDate=?,buyDate=?,cancelDate=?,buyerContact=?,buyerId=? where goodsId=?";
+		String sql="update tb_goods_want set classId=?,goodsName=?,price=?,status=?,picture=?,description=?,sellerContact=?,reserveDate=?,buyDate=?,cancelDate=?,buyerContact=?,buyerId=? where goodsId=?";
 		try {
 			Connection connection=DBHelper.getConnection();
 			PreparedStatement ptmt=connection.prepareStatement(sql);
