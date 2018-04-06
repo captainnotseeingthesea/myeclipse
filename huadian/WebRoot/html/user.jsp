@@ -130,6 +130,7 @@ Integer fileCount(Goods goods){
 					<li class="inner_li"><a>出售物品指南</a></li>
 				</ul>
 			</li>
+			<li class="header_li first_page"><a href="/huadian/html/index.jsp">首页</a></li>
 		</ul>
 	</div>
 	</header>

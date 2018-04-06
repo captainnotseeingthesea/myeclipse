@@ -71,7 +71,7 @@ $(function(){
 		$("#main .center .buyerInfo").fadeOut();
 	});
 	$("#main .center .buyerInfo .reserve").click(function(){
-		var msg="您真的确定要预约该物品吗？\n\n请确认！";
+		var msg="您真的确定要预约该物品吗?\n\n请确认";
 		  if (confirm(msg)==true){ 
 			    return true; 
 			  }else{ 

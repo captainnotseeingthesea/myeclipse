@@ -4,10 +4,10 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
- <servlet>
- 	<servlet-name>Login</servlet-name>
- 	<servlet-class>servlet.Login</servlet-class>
- </servlet>
+  <servlet>
+    <servlet-name>Login</servlet-name>
+    <servlet-class>servlet.Login</servlet-class>
+  </servlet>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
@@ -56,18 +56,10 @@
     <servlet-name>SellWantGoods</servlet-name>
     <servlet-class>servlet.SellWantGoods</servlet-class>
   </servlet>
-
-
-
-
-
-
-
-
- <servlet-mapping>
- 	<servlet-name>Login</servlet-name>
- 	<url-pattern>/servlet/login</url-pattern>
- </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/servlet/login</url-pattern>
+  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>HelloServlet</servlet-name>
     <url-pattern>/servlet/HelloServlet</url-pattern>
@@ -100,4 +92,57 @@
     <servlet-name>SellWantGoods</servlet-name>
     <url-pattern>/servlet/SellWantGoods</url-pattern>
   </servlet-mapping>
+  <filter>
+    <display-name>Filter</display-name>
+    <filter-name>Filter</filter-name>
+    <filter-class>filter.Filter</filter-class>
+    <init-param>    
+		<param-name>excludedPages</param-name>    
+		<param-value>/html/index.jsp</param-value>    
+	</init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>Filter</filter-name>
+    <url-pattern>/Filter</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Filter</filter-name>
+    <servlet-name>BuyGoods</servlet-name>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Filter</filter-name>
+    <servlet-name>CancelGoods</servlet-name>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Filter</filter-name>
+    <servlet-name>Exit</servlet-name>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Filter</filter-name>
+    <servlet-name>HelloServlet</servlet-name>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Filter</filter-name>
+    <servlet-name>SellGoods</servlet-name>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Filter</filter-name>
+    <servlet-name>SellWantGoods</servlet-name>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Filter</filter-name>
+    <servlet-name>WantGoods</servlet-name>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>Filter</filter-name>
+    <url-pattern>/html/*</url-pattern>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
 </web-app>

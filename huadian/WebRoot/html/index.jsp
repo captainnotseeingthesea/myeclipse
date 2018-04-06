@@ -32,21 +32,28 @@
 	pageBean.setPageSize(6); 
 	Goods goodsTest=new Goods();
 	goodsTest.setClassId(goodsClass);
-	//ArrayList<Goods> goodsList=goodsService.queryGoods(1);
-	if((buyOrSell==0||buyOrSell==1)&&goodsClass==0){
-		pageBean=goodsService.queryGoodsByCondition(1,pageBean, goodsTest, "all");
+	String goodsName="";
+	if(request.getParameter("search")!=null&&request.getParameter("search").length()>0){
+		goodsName=request.getParameter("search");
+		goodsTest.setGoodsName(goodsName);
+		pageBean=goodsService.queryGoodsByCondition(1, pageBean, goodsTest, "goodsName");
 	}
-	else if((buyOrSell==0||buyOrSell==1)&&goodsClass!=0)
-	{
-		pageBean=goodsService.queryGoodsByCondition(1,pageBean, goodsTest, "class");
-	}
-	else if((buyOrSell==2)&&goodsClass==0)
-	{
-		pageBean=goodsWantService.queryGoodsByCondition(1,pageBean, goodsTest, "all");
-	}
-	else if((buyOrSell==2)&&goodsClass!=0)
-	{
-		pageBean=goodsWantService.queryGoodsByCondition(1,pageBean, goodsTest, "class");
+	else{
+		if((buyOrSell==0||buyOrSell==1)&&goodsClass==0){
+			pageBean=goodsService.queryGoodsByCondition(1,pageBean, goodsTest, "all");
+		}
+		else if((buyOrSell==0||buyOrSell==1)&&goodsClass!=0)
+		{
+			pageBean=goodsService.queryGoodsByCondition(1,pageBean, goodsTest, "class");
+		}
+		else if((buyOrSell==2)&&goodsClass==0)
+		{
+			pageBean=goodsWantService.queryGoodsByCondition(1,pageBean, goodsTest, "all");
+		}
+		else if((buyOrSell==2)&&goodsClass!=0)
+		{
+			pageBean=goodsWantService.queryGoodsByCondition(1,pageBean, goodsTest, "class");
+		}
 	}
 	goodsList=pageBean.getList();
 	
@@ -133,8 +140,8 @@ Integer fileCount(Goods goods){
                 </ul>
             </div>
             <div class="nav_search">
-                <form action="#" method="get" class="nav_form">
-                    <input type="search" name="search" id="search" placeholder="请输入要查询的商品名称"><input type="button" name="btn" id="btn">
+                <form action="/huadian/html/index.jsp" method="get" class="nav_form">
+                    <input type="search" name="search" id="search" placeholder="请输入要查询的商品名称" required="required"><input type=submit name="btn" id="btn" value="">
                 </form>
             </div>
         </div>
@@ -160,6 +167,7 @@ Integer fileCount(Goods goods){
             <div class="register_img2"></div>
             <div class="register_img3"></div>            
         </div>
+        <%if(session.getAttribute("loginUsername")==null){ %>
         <div class="login">
             <div class="login_header">
                 <p>
@@ -179,6 +187,7 @@ Integer fileCount(Goods goods){
             <div class="login_img1"></div>
             <div class="login_img2"></div>
         </div>
+        <%} %>
         <div class="lunbotu">
             <div class="lbt_pic">
                 <div class="pic">
@@ -234,9 +243,9 @@ Integer fileCount(Goods goods){
             
             <div class="good">
             	<%if(buyOrSell==0||buyOrSell==1){ %>
-                <a href="/huadian/html/goodsShow.jsp?fileCount=<%=fileCount(goods)%>&goodsId=<%=goods.getGoodsId()%>"><img src=<%=path+goods.getPicture()+File.separator+"thumbnail.1.jpg"%> alt="图片无法显示"></a>
+                <a href="/huadian/html/goodsShow.jsp?fileCount=<%=fileCount(goods)%>&goodsId=<%=goods.getGoodsId()%>&reserve=1"><img src=<%=path+goods.getPicture()+File.separator+"thumbnail.1.jpg"%> alt="图片无法显示"></a>
                 <%}else if(buyOrSell==2){ %>
-                <a href="/huadian/html/wantGoodsShow.jsp?fileCount=<%=fileCount(goods)%>&goodsId=<%=goods.getGoodsId()%>"><img src=<%=path+goods.getPicture()+File.separator+"thumbnail.1.jpg"%> alt="图片无法显示"></a>
+                <a href="/huadian/html/wantGoodsShow.jsp?fileCount=<%=fileCount(goods)%>&goodsId=<%=goods.getGoodsId()%>&reserve=1"><img src=<%=path+goods.getPicture()+File.separator+"thumbnail.1.jpg"%> alt="图片无法显示"></a>
                 <%} %>
                 <p class="good_name"><span><%=goods.getGoodsName()%></span></p>
                 <div class="good_des">
@@ -247,23 +256,27 @@ Integer fileCount(Goods goods){
                     </div>
                 </div>
             </div>
-            <%}} %>
+            <%}}else{ %>
+            <div class="noGoods">
+            	<img alt="no goods" src="/huadian/html/img/no-goods.png">
+            </div>
+            <%} %>
             <div class="pageDiv">
             	<%if(pageBean.getTotalPage()>=1){
             	if(pageBean.getPageNum()>1){ %>
-            		<a href="/huadian/html/index.jsp?pageNum=1&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>" class="page">首页</a>
-            		<a href="/huadian/html/index.jsp?pageNum=<%=pageNum-1 %>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>" class="page">前一页</a>
+            		<a href="/huadian/html/index.jsp?pageNum=1&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>&search=<%=goodsName %>" class="page">首页</a>
+            		<a href="/huadian/html/index.jsp?pageNum=<%=pageNum-1 %>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>&search=<%=goodsName %>" class="page">前一页</a>
             	<%}
             	 for(int i=pageBean.getStart();i<pageBean.getPageNum();i++){%>
-            		<a class="page" href="/huadian/html/index.jsp?pageNum=<%=i%>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>">第<%=i%>页</a>
+            		<a class="page" href="/huadian/html/index.jsp?pageNum=<%=i%>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>&search=<%=goodsName %>">第<%=i%>页</a>
             		<%} %>
             		<a class="page" id="pageNum" href="javascript:void(0);">第<%=pageBean.getPageNum() %>页</a>
             	<%for(int i=pageBean.getPageNum()+1;i<=pageBean.getEnd();i++){ %>
-            		<a class="page" href="/huadian/html/index.jsp?pageNum=<%=i%>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>">第<%=i%>页</a>
+            		<a class="page" href="/huadian/html/index.jsp?pageNum=<%=i%>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>&search=<%=goodsName %>">第<%=i%>页</a>
             	<%}
             	if(pageBean.getPageNum()<pageBean.getTotalPage()){ %>
-            		<a class="page" href="/huadian/html/index.jsp?pageNum=<%=pageNum+1%>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>">后一页</a>
-            		<a class="page" href="/huadian/html/index.jsp?pageNum=<%=pageBean.getTotalPage()%>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>">尾页</a>
+            		<a class="page" href="/huadian/html/index.jsp?pageNum=<%=pageNum+1%>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>&search=<%=goodsName %>">后一页</a>
+            		<a class="page" href="/huadian/html/index.jsp?pageNum=<%=pageBean.getTotalPage()%>&buyOrSell=<%=buyOrSell %>&goodsClass=<%=goodsClass %>&search=<%=goodsName %>">尾页</a>
             	<%}} %>
             </div>
         </div>

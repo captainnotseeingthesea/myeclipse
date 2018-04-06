@@ -407,6 +407,10 @@ aside div span a:hover{
     float: right;
     position: absolute;
 }
+#goods .noGoods{
+	text-align:center;
+	margin-top:100px;
+}
 #goods .good{
     width: 200px;
     height: 230px;
@@ -419,10 +423,10 @@ aside div span a:hover{
     overflow: hidden;
 }
 #goods .pageDiv{
-	width:300px;
+	width:1000px;
 	position:absolute;
 	bottom:30px;
-	right:500px;
+	right:150px;
 	text-align:center;
 }
  .pageDiv .page{

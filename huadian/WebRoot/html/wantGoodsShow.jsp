@@ -21,7 +21,7 @@
 	<title>商品展示</title>
 	<link rel="stylesheet" type="text/css" href="/huadian/html/css/goodsShow.css">
 	<script type="text/javascript" src="/huadian/html/js/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="/huadian/html/js/goodsShow.js"></script>
+	<script type="text/javascript" src="/huadian/html/js/goodsShow.js" charset="gb2312"></script>
 </head>
 <body>
 	                         <!-- 头部 -->
@@ -83,7 +83,9 @@
 				<p class="contact">
 					卖主联系方式：<span><%=goods.getSellerContact() %></span>
 				</p>
-					<a class="reserve">立即预定</a>
+					<%if(request.getParameter("reserve")!=null){%>
+						<a class="reserve">立即预定</a>
+					<%} %>
 			</div>
 			<div class="buyerInfo">
 				<form action="/huadian/servlet/SellWantGoods" method="post">
