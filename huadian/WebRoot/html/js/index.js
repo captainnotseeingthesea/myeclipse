@@ -86,7 +86,7 @@ $(function() {
 				} else if (json["temp"] == 2) {
 					$(".login_tishi").html("两次密码不匹配");
 				} else if (json["temp"] == 3) {
-					$(".login_tishi").html("密码不可为空");
+					$(".login_tishi").html("密码字母和数字构成，不能超过16位");
 				} else {
 					$(".login_tishi").html("用户名已经存在");
 				}

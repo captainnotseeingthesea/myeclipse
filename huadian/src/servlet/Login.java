@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import DateFormat.DateFormat;
+
+import security.MD5;
+import service.UserService;
+
 import model.User;
 import model.UserControl;
 
@@ -39,14 +44,18 @@ public class Login extends HttpServlet{
 		String password=request.getParameter("password");
 		String jsString="{\"i\":";
 		StringBuffer jsonBuffer=new StringBuffer(jsString);
+		UserService userService=new UserService();
 		try {
 			if (usControl.query(nameString).size()==1) {
 				User user=usControl.query(nameString).get(0);
-				if(user.getPassword().equals(password))
+				if(user.getPassword().equals(MD5.MD5(password)))
 				{					
 					System.out.println("µÇÂ¼³É¹¦£¡");
 					session.setAttribute("loginUsername",nameString);
-					
+					DateFormat loginTime=new DateFormat();
+					user.setLoginTime(loginTime.dateFormat().toString());
+					user.setId(userService.queryUser(user).getId());
+					userService.updateUserLoginTime(user);
 				}
 				else {
 					i=1;

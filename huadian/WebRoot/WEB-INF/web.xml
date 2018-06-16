@@ -56,6 +56,90 @@
     <servlet-name>SellWantGoods</servlet-name>
     <servlet-class>servlet.SellWantGoods</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>managerLogin</servlet-name>
+    <servlet-class>servlet.managerLogin</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Manager</servlet-name>
+    <servlet-class>servlet.Manager</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>servlet.Logout</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ManagerUpdate</servlet-name>
+    <servlet-class>servlet.ManagerUpdate</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ManageUsers</servlet-name>
+    <servlet-class>servlet.ManageUsers</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UpdateUsers</servlet-name>
+    <servlet-class>servlet.UpdateUsers</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DeleteUsers</servlet-name>
+    <servlet-class>servlet.DeleteUsers</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AddUsers</servlet-name>
+    <servlet-class>servlet.AddUsers</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ManageGoodsClass</servlet-name>
+    <servlet-class>servlet.ManageGoodsClass</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>AddGoodsClass</servlet-name>
+    <servlet-class>servlet.AddGoodsClass</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>DeleteGoodsClass</servlet-name>
+    <servlet-class>servlet.DeleteGoodsClass</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>UpdateGoodsClass</servlet-name>
+    <servlet-class>servlet.UpdateGoodsClass</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+
+
+
+
   <servlet-mapping>
     <servlet-name>Login</servlet-name>
     <url-pattern>/servlet/login</url-pattern>
@@ -91,6 +175,54 @@
   <servlet-mapping>
     <servlet-name>SellWantGoods</servlet-name>
     <url-pattern>/servlet/SellWantGoods</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>managerLogin</servlet-name>
+    <url-pattern>/servlet/managerLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Manager</servlet-name>
+    <url-pattern>/servlet/Manager</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/servlet/Logout</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ManagerUpdate</servlet-name>
+    <url-pattern>/servlet/ManagerUpdate</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ManageUsers</servlet-name>
+    <url-pattern>/servlet/ManageUsers</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateUsers</servlet-name>
+    <url-pattern>/servlet/UpdateUsers</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteUsers</servlet-name>
+    <url-pattern>/servlet/DeleteUsers</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddUsers</servlet-name>
+    <url-pattern>/servlet/AddUsers</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ManageGoodsClass</servlet-name>
+    <url-pattern>/servlet/ManageGoodsClass</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AddGoodsClass</servlet-name>
+    <url-pattern>/servlet/AddGoodsClass</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>DeleteGoodsClass</servlet-name>
+    <url-pattern>/servlet/DeleteGoodsClass</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>UpdateGoodsClass</servlet-name>
+    <url-pattern>/servlet/UpdateGoodsClass</url-pattern>
   </servlet-mapping>
   <filter>
     <display-name>Filter</display-name>

@@ -13,9 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import model.Goods;
 import model.User;
-import model.UserService;
 
 import service.GoodsService;
+import service.UserService;
 
 public class BuyGoods extends HttpServlet {
 
@@ -82,7 +82,7 @@ public class BuyGoods extends HttpServlet {
 			goods.setReserveDate(new Timestamp(System.currentTimeMillis()));
 			goods.setBuyerContact(contact);
 			user.setNameString(username);
-			Integer buyerId=userService.queryUserId(user).getId();
+			Integer buyerId=userService.queryUser(user).getId();
 			goods.setBuyerId(buyerId);
 			goods.setReserveDate(new Timestamp(System.currentTimeMillis()));
 			goods.setStatus(2);

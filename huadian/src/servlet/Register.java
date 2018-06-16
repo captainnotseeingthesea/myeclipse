@@ -3,6 +3,8 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -76,13 +78,14 @@ public class Register extends HttpServlet {
 		String username = request.getParameter("username");
 		String password1 = request.getParameter("password1");
 		String password2 = request.getParameter("password2");
-		if (username.length() > 10 || username.length() < 1) {
+		
+		if (!Pattern.compile("[a-zA-Z\u4e00-\u9fa5]{1}[a-zA-Z0-9_\u4e00-\u9fa5]{1,10}").matcher(username).matches()) {
 			System.out.print("用户名格式不正确！");
 			temp=1;
 		} else {
 			try {
 				if (usControl.query(username).size() == 0) {
-					if (password1.length() > 0 || password2.length() > 0) {
+					if (Pattern.compile("[a-zA-Z0-9]{1,16}").matcher(password1).matches()) {
 						if (password1.equals(password2)) {
 							user.setNameString(username);
 							user.setPassword(password1);
@@ -99,7 +102,7 @@ public class Register extends HttpServlet {
 						}
 					} else {
 						temp=3;
-						System.out.print("密码不可为空！");
+						System.out.print("密码字母和数字构成，不能超过16位！");
 					}
 				}
 				else{

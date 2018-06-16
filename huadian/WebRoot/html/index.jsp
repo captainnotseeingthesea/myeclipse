@@ -100,7 +100,7 @@ Integer fileCount(Goods goods){
         <div class="header_in">
            <ul class="header_left">
               <li class="header_li">
-                  <a href="#">华电[切换大学]</a>
+                  <a href="#">华北电力大学（保定）</a>
               </li>
             <li class="header_li" style="padding: 0 20px 0 19px">
                  <span style="color:#a3a3a3">华电统一客服热线</span>              

@@ -1,7 +1,7 @@
 <%@page import="service.GoodsWantService"%>
 <%@page import="java.io.File"%>
 <%@page import="model.User"%>
-<%@page import="model.UserService"%>
+<%@page import="service.UserService"%>
 <%@page import="model.Goods"%>
 <%@page import="model.PageBean"%>
 <%@page import="service.GoodsService"%>
@@ -32,7 +32,7 @@
 	UserService userService=new UserService();
 	User user=new User();
 	user.setNameString(username);
-	Integer userId=userService.queryUserId(user).getId();
+	Integer userId=userService.queryUser(user).getId();
 	//System.out.println(userId);
 	PageBean<Goods> pageBean=new PageBean<Goods>();
 	pageBean.setPageNum(pageNum);

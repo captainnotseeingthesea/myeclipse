@@ -14,7 +14,7 @@ public class GoodsService {
 		UserControl userControl=new UserControl();
 		GoodsControl goodsControl=new GoodsControl();
 		Integer userId;
-		userId = userControl.queryUserId(user).getId();
+		userId = userControl.queryUser(user).getId();
 		goods.setSellerId(userId);
 		goods.setStatus(1);
 		goodsControl.insertGoods(goods);

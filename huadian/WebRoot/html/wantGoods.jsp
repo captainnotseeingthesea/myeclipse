@@ -72,7 +72,7 @@
 	</select><span>选择物品的种类</span></label>
 	<br/>
 
-	<label for="price" class="lab"><input type="number" name="price" id="price" required form="upBox" step="0.01">
+	<label for="price" class="lab"><input type="number" min="0" name="price" id="price" required form="upBox" step="0.01">
 		<span>您的认为合适的价格(元)</span></label>
 	<br/>
 

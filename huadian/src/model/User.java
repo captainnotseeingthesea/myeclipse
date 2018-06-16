@@ -1,7 +1,24 @@
 package model;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class User {
-	private Integer id;
+	private Integer id;//数据库id
+	private Integer kid;//顺次id号
+	private String loginTime;//上次登录的时间
+	public String getLoginTime() {
+		return loginTime;
+	}
+	public void setLoginTime(String loginTime) {
+		this.loginTime = loginTime;
+	}
+	public Integer getKid() {
+		return kid;
+	}
+	public void setKid(Integer kid) {
+		this.kid = kid;
+	}
 	private String nameString;
 	private String password;
 	public Integer getId() {
